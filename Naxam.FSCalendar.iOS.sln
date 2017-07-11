@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Naxam.FSCalendar.iOS", "Nax
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSCalendarQS", "FSCalendarQS\FSCalendarQS.csproj", "{F2382B44-B574-4AB0-9B3D-68795729C0F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{CDCCE07E-946D-4A39-8C9A-1A05CC3114F1}"
+	ProjectSection(SolutionItems) = preProject
+		fscalendar.nuspec = fscalendar.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

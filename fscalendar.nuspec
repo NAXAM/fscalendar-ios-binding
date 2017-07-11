@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Naxam.FSCalendar.iOS</id>
+    <version>2.7.9</version>
+    <authors>hado</authors>
+    <owners>NAXAM COMPANY LIMITED</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/NAXAM/fscalendar-ios-binding</projectUrl>
+    <iconUrl>https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/19430128_1394919697251442_2614019130355005300_n.png?oh=2d6684c90177b2214155e8c4784f49c5&amp;oe=5A0B0567</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <title>NAXAM - FSCalendar</title>
+    <description>Xamarin Binding Library - FSCalendar</description>
+    <releaseNotes>FSCalendar 2.7.9</releaseNotes>
+    <copyright>Copyright 2017 NAXAM</copyright>
+    <tags>Xamarin.iOS fscalendar calendar date-picker date-selector naxam</tags>
+    <dependencies>
+      <!--<dependency id="SampleDependency" version="1.0" />-->
+    </dependencies>
+  </metadata>
+  <files>
+        <file src="Naxam.FSCalendar.iOS/bin/Release/Naxam.FSCalendar.iOS.dll" target="lib/Xamarin.iOS10/Naxam.FSCalendar.iOS.dll" />
+    </files>
+</package>
