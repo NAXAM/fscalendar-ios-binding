@@ -6,97 +6,8 @@ using ObjCRuntime;
 using CoreGraphics;
 using CoreAnimation;
 
-namespace FSCalendar
+namespace FSCalendarAbstractions
 {
-//    [Static]
-//[Verify(ConstantsInterfaceAssociation)]
-	//partial interface Constants
-	//{
-	//	// extern const CGFloat FSCalendarStandardHeaderHeight;
-	//	[Field("FSCalendarStandardHeaderHeight", "__Internal")]
-	//	nfloat FSCalendarStandardHeaderHeight { get; }
-
-	//	// extern const CGFloat FSCalendarStandardWeekdayHeight;
-	//	[Field("FSCalendarStandardWeekdayHeight", "__Internal")]
-	//	nfloat FSCalendarStandardWeekdayHeight { get; }
-
-	//	// extern const CGFloat FSCalendarStandardMonthlyPageHeight;
-	//	[Field("FSCalendarStandardMonthlyPageHeight", "__Internal")]
-	//	nfloat FSCalendarStandardMonthlyPageHeight { get; }
-
-	//	// extern const CGFloat FSCalendarStandardWeeklyPageHeight;
-	//	[Field("FSCalendarStandardWeeklyPageHeight", "__Internal")]
-	//	nfloat FSCalendarStandardWeeklyPageHeight { get; }
-
-	//	// extern const CGFloat FSCalendarStandardCellDiameter;
-	//	[Field("FSCalendarStandardCellDiameter", "__Internal")]
-	//	nfloat FSCalendarStandardCellDiameter { get; }
-
-	//	// extern const CGFloat FSCalendarStandardSeparatorThickness;
-	//	[Field("FSCalendarStandardSeparatorThickness", "__Internal")]
-	//	nfloat FSCalendarStandardSeparatorThickness { get; }
-
-	//	// extern const CGFloat FSCalendarAutomaticDimension;
-	//	[Field("FSCalendarAutomaticDimension", "__Internal")]
-	//	nfloat FSCalendarAutomaticDimension { get; }
-
-	//	// extern const CGFloat FSCalendarDefaultBounceAnimationDuration;
-	//	[Field("FSCalendarDefaultBounceAnimationDuration", "__Internal")]
-	//	nfloat FSCalendarDefaultBounceAnimationDuration { get; }
-
-	//	// extern const CGFloat FSCalendarStandardRowHeight;
-	//	[Field("FSCalendarStandardRowHeight", "__Internal")]
-	//	nfloat FSCalendarStandardRowHeight { get; }
-
-	//	// extern const CGFloat FSCalendarStandardTitleTextSize;
-	//	[Field("FSCalendarStandardTitleTextSize", "__Internal")]
-	//	nfloat FSCalendarStandardTitleTextSize { get; }
-
-	//	// extern const CGFloat FSCalendarStandardSubtitleTextSize;
-	//	[Field("FSCalendarStandardSubtitleTextSize", "__Internal")]
-	//	nfloat FSCalendarStandardSubtitleTextSize { get; }
-
-	//	// extern const CGFloat FSCalendarStandardWeekdayTextSize;
-	//	[Field("FSCalendarStandardWeekdayTextSize", "__Internal")]
-	//	nfloat FSCalendarStandardWeekdayTextSize { get; }
-
-	//	// extern const CGFloat FSCalendarStandardHeaderTextSize;
-	//	[Field("FSCalendarStandardHeaderTextSize", "__Internal")]
-	//	nfloat FSCalendarStandardHeaderTextSize { get; }
-
-	//	// extern const CGFloat FSCalendarMaximumEventDotDiameter;
-	//	[Field("FSCalendarMaximumEventDotDiameter", "__Internal")]
-	//	nfloat FSCalendarMaximumEventDotDiameter { get; }
-
-	//	// extern const CGFloat FSCalendarStandardScopeHandleHeight;
-	//	[Field("FSCalendarStandardScopeHandleHeight", "__Internal")]
-	//	nfloat FSCalendarStandardScopeHandleHeight { get; }
-
-	//	// extern const NSInteger FSCalendarDefaultHourComponent __attribute__((visibility("default")));
-	//	[Field("FSCalendarDefaultHourComponent", "__Internal")]
-	//	nint FSCalendarDefaultHourComponent { get; }
-
-	//	// extern NSString *const FSCalendarDefaultCellReuseIdentifier __attribute__((visibility("default")));
-	//	[Field("FSCalendarDefaultCellReuseIdentifier", "__Internal")]
-	//	NSString FSCalendarDefaultCellReuseIdentifier { get; }
-
-	//	// extern NSString *const FSCalendarBlankCellReuseIdentifier __attribute__((visibility("default")));
-	//	[Field("FSCalendarBlankCellReuseIdentifier", "__Internal")]
-	//	NSString FSCalendarBlankCellReuseIdentifier { get; }
-
-	//	// extern NSString *const FSCalendarInvalidArgumentsExceptionName __attribute__((visibility("default")));
-	//	[Field("FSCalendarInvalidArgumentsExceptionName", "__Internal")]
-	//	NSString FSCalendarInvalidArgumentsExceptionName { get; }
-
-	//	// extern const CGPoint CGPointInfinity;
-	//	[Field("CGPointInfinity", "__Internal")]
-	//	CGPoint CGPointInfinity { get; }
-
-	//	// extern const CGSize CGSizeAutomatic;
-	//	[Field("CGSizeAutomatic", "__Internal")]
-	//	CGSize CGSizeAutomatic { get; }
-	//}
-
 	// @interface FSCalendarAppearance : NSObject
 	[BaseType(typeof(NSObject))]
 	interface FSCalendarAppearance
@@ -256,11 +167,11 @@ namespace FSCalendar
 
 		// @property (getter = isPlaceholder, assign, nonatomic) BOOL placeholder;
 		[Export("placeholder")]
-		bool IsPlaceholder { [Bind("isPlaceholder")] get; set; }
+		bool Placeholder { [Bind("isPlaceholder")] get; set; }
 
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (nonatomic, weak) FSCalendarAppearance * appearance;
 		[Export("appearance", ArgumentSemantic.Weak)]
@@ -350,28 +261,26 @@ namespace FSCalendar
 		[Export("preferredBorderRadius")]
 		nfloat PreferredBorderRadius { get; set; }
 
-		// -(instancetype)initWithFrame:(CGRect)frame __attribute__((objc_requires_super));
-		[Export("initWithFrame:")]
-		//[RequiresSuper]
-		IntPtr Constructor(CGRect frame);
+        // -(instancetype)initWithFrame:(CGRect)frame __attribute__((objc_requires_super));
+        [Export("initWithFrame:")]
+        IntPtr Constructor(CGRect frame);
 
-		//// -(instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((objc_requires_super));
-		//[Export("initWithCoder:")]
-		////[RequiresSuper]
-		//IntPtr Constructor(NSCoder aDecoder);
+        //// -(instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((objc_requires_super));
+        //[Export("initWithCoder:")]
+        //[RequiresSuper]
+        //IntPtr Constructor(NSCoder aDecoder);
 
-		// -(void)layoutSubviews __attribute__((objc_requires_super));
-		[Export("layoutSubviews")]
-		//[RequiresSuper]
-		void LayoutSubviews();
+        //// -(void)layoutSubviews __attribute__((objc_requires_super));
+        //[Export("layoutSubviews")]
+        //[RequiresSuper]
+        //void LayoutSubviews();
 
-		// -(void)configureAppearance __attribute__((objc_requires_super));
-		[Export("configureAppearance")]
-		//[RequiresSuper]
-		void ConfigureAppearance();
+        // -(void)configureAppearance __attribute__((objc_requires_super));
+        [Export("configureAppearance")]
+        void ConfigureAppearance();
 
-		// -(UIColor *)colorForCurrentStateInDictionary:(NSDictionary *)dictionary;
-		[Export("colorForCurrentStateInDictionary:")]
+        // -(UIColor *)colorForCurrentStateInDictionary:(NSDictionary *)dictionary;
+        [Export("colorForCurrentStateInDictionary:")]
 		UIColor ColorForCurrentStateInDictionary(NSDictionary dictionary);
 
 		// -(void)performSelecting;
@@ -428,11 +337,7 @@ namespace FSCalendar
 
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
-
-		// @property (assign, nonatomic) CGFloat scrollOffset;
-		[Export("scrollOffset")]
-		nfloat ScrollOffset { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (assign, nonatomic) UICollectionViewScrollDirection scrollDirection;
 		[Export("scrollDirection", ArgumentSemantic.Assign)]
@@ -442,13 +347,9 @@ namespace FSCalendar
 		[Export("scrollEnabled")]
 		bool ScrollEnabled { get; set; }
 
-		// @property (assign, nonatomic) BOOL needsAdjustingViewFrame;
-		[Export("needsAdjustingViewFrame")]
-		bool NeedsAdjustingViewFrame { get; set; }
-
-		// @property (assign, nonatomic) BOOL needsAdjustingMonthPosition;
-		[Export("needsAdjustingMonthPosition")]
-		bool NeedsAdjustingMonthPosition { get; set; }
+		// -(void)setScrollOffset:(CGFloat)scrollOffset;
+		[Export("setScrollOffset:")]
+		void SetScrollOffset(nfloat scrollOffset);
 
 		// -(void)setScrollOffset:(CGFloat)scrollOffset animated:(BOOL)animated;
 		[Export("setScrollOffset:animated:")]
@@ -488,7 +389,7 @@ namespace FSCalendar
 	{
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (nonatomic, weak) FSCalendarHeaderView * header;
 		[Export("header", ArgumentSemantic.Weak)]
@@ -496,7 +397,6 @@ namespace FSCalendar
 	}
 
 	//[Static]
-	//[Verify(ConstantsInterfaceAssociation)]
 	//partial interface Constants
 	//{
 	//	// extern double FSCalendarVersionNumber;
@@ -505,10 +405,11 @@ namespace FSCalendar
 
 	//	// extern const unsigned char [] FSCalendarVersionString;
 	//	[Field("FSCalendarVersionString", "__Internal")]
-	//	byte[] FSCalendarVersionString { get; }
+	//	NSString FSCalendarVersionString { get; }
 	//}
 
     partial interface IFSCalendarDataSource { }
+
 	// @protocol FSCalendarDataSource <NSObject>
 	[Protocol, Model]
 	[BaseType(typeof(NSObject))]
@@ -517,40 +418,34 @@ namespace FSCalendar
 		// @optional -(NSString * _Nullable)calendar:(FSCalendar * _Nonnull)calendar titleForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:titleForDate:")]
 		[return: NullAllowed]
-		string CalendarDateTitle(FSCalendarView calendar, NSDate date);
+		string Calendar_TitleForDate(FSCalendar calendar, NSDate date);
 
 		// @optional -(NSString * _Nullable)calendar:(FSCalendar * _Nonnull)calendar subtitleForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:subtitleForDate:")]
 		[return: NullAllowed]
-		string CalendarDateSubtitle(FSCalendarView calendar, NSDate date);
+		string Calendar_SubtitleForDate(FSCalendar calendar, NSDate date);
 
 		// @optional -(UIImage * _Nullable)calendar:(FSCalendar * _Nonnull)calendar imageForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:imageForDate:")]
 		[return: NullAllowed]
-		UIImage CalendarDateImage(FSCalendarView calendar, NSDate date);
+		UIImage Calendar_ImageForDate(FSCalendar calendar, NSDate date);
 
 		// @optional -(NSDate * _Nonnull)minimumDateForCalendar:(FSCalendar * _Nonnull)calendar;
 		[Export("minimumDateForCalendar:")]
-		NSDate MinimumDateForCalendar(FSCalendarView calendar);
+		NSDate MinimumDateForCalendar(FSCalendar calendar);
 
 		// @optional -(NSDate * _Nonnull)maximumDateForCalendar:(FSCalendar * _Nonnull)calendar;
 		[Export("maximumDateForCalendar:")]
-		NSDate MaximumDateForCalendar(FSCalendarView calendar);
+		NSDate MaximumDateForCalendar(FSCalendar calendar);
 
 		// @optional -(__kindof FSCalendarCell * _Nonnull)calendar:(FSCalendar * _Nonnull)calendar cellForDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)position;
 		[Export("calendar:cellForDate:atMonthPosition:")]
-		FSCalendarCell CalendarCellForDate(FSCalendarView calendar, NSDate date, FSCalendarMonthPosition position);
+		FSCalendarCell Calendar_CellForDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition position);
 
 		// @optional -(NSInteger)calendar:(FSCalendar * _Nonnull)calendar numberOfEventsForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:numberOfEventsForDate:")]
-		nint CalendarDateNumberOfEvents(FSCalendarView calendar, NSDate date);
-
-		// @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar hasEventForDate:(NSDate * _Nonnull)date __attribute__((deprecated(" Use -calendar:numberOfEventsForDate: instead")));
-		[Export("calendar:hasEventForDate:")]
-		bool CalendarHasEventForDate(FSCalendarView calendar, NSDate date);
+		nint Calendar_NumberOfEventsForDate(FSCalendar calendar, NSDate date);
 	}
-
-    partial interface IFSCalendarDelegate {}
 
 	// @protocol FSCalendarDelegate <NSObject>
 	[Protocol, Model]
@@ -559,114 +454,114 @@ namespace FSCalendar
 	{
 		// @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldSelectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 		[Export("calendar:shouldSelectDate:atMonthPosition:")]
-		bool CalendarShouldSelectDate(FSCalendarView calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+		bool CalendarShouldSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
 		// @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didSelectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 		[Export("calendar:didSelectDate:atMonthPosition:")]
-		void CalendarDidSelectDate(FSCalendarView calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+		void CalendarDidSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
 		// @optional -(BOOL)calendar:(FSCalendar * _Nonnull)calendar shouldDeselectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 		[Export("calendar:shouldDeselectDate:atMonthPosition:")]
-		bool CalendarShouldDeselectDate(FSCalendarView calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+		bool CalendarShouldDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
 		// @optional -(void)calendar:(FSCalendar * _Nonnull)calendar didDeselectDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 		[Export("calendar:didDeselectDate:atMonthPosition:")]
-		void CalendarDidDeselectDate(FSCalendarView calendar, NSDate date, FSCalendarMonthPosition monthPosition);
+		void CalendarDidDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition);
 
 		// @optional -(void)calendar:(FSCalendar * _Nonnull)calendar boundingRectWillChange:(CGRect)bounds animated:(BOOL)animated;
 		[Export("calendar:boundingRectWillChange:animated:")]
-		void CalendarBoundingRectWillChange(FSCalendarView calendar, CGRect bounds, bool animated);
+		void CalendarBoundingRectWillChange(FSCalendar calendar, CGRect bounds, bool animated);
 
 		// @optional -(void)calendar:(FSCalendar * _Nonnull)calendar willDisplayCell:(FSCalendarCell * _Nonnull)cell forDate:(NSDate * _Nonnull)date atMonthPosition:(FSCalendarMonthPosition)monthPosition;
 		[Export("calendar:willDisplayCell:forDate:atMonthPosition:")]
-		void CalendarWillDisplayCell(FSCalendarView calendar, FSCalendarCell cell, NSDate date, FSCalendarMonthPosition monthPosition);
+		void CalendarWillDisplayCell(FSCalendar calendar, FSCalendarCell cell, NSDate date, FSCalendarMonthPosition monthPosition);
 
 		// @optional -(void)calendarCurrentPageDidChange:(FSCalendar * _Nonnull)calendar;
 		[Export("calendarCurrentPageDidChange:")]
-		void CalendarCurrentPageDidChange(FSCalendarView calendar);
-
+		void CalendarCurrentPageDidChange(FSCalendar calendar);
 	}
 
-    partial interface IFSCalendarDelegate {}
+	partial interface IFSCalendarDelegate { }
 
 	// @protocol FSCalendarDelegateAppearance <FSCalendarDelegate>
 	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
 	interface FSCalendarDelegateAppearance : FSCalendarDelegate
 	{
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance fillDefaultColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:fillDefaultColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarFillDefaultColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_FillDefaultColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance fillSelectionColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:fillSelectionColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarFillSelectionColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_FillSelectionColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance titleDefaultColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:titleDefaultColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarTitleDefaultColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_TitleDefaultColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance titleSelectionColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:titleSelectionColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarTitleSelectionColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_TitleSelectionColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance subtitleDefaultColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:subtitleDefaultColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarSubtitleDefaultColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_SubtitleDefaultColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance subtitleSelectionColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:subtitleSelectionColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarSubtitleSelectionColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_SubtitleSelectionColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(NSArray<UIColor *> * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance eventDefaultColorsForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:eventDefaultColorsForDate:")]
 		[return: NullAllowed]
-		UIColor[] CalendarEventDefaultColorsForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor[] Calendar_EventDefaultColorsForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(NSArray<UIColor *> * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance eventSelectionColorsForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:eventSelectionColorsForDate:")]
 		[return: NullAllowed]
-		UIColor[] CalendarEventSelectionColorsForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor[] Calendar_EventSelectionColorsForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance borderDefaultColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:borderDefaultColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarBorderDefaultColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_BorderDefaultColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(UIColor * _Nullable)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance borderSelectionColorForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:borderSelectionColorForDate:")]
 		[return: NullAllowed]
-		UIColor CalendarBorderSelectionColorForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		UIColor Calendar_BorderSelectionColorForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(CGPoint)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance titleOffsetForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:titleOffsetForDate:")]
-		CGPoint CalendarTitleOffsetForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		CGPoint Calendar_TitleOffsetForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(CGPoint)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance subtitleOffsetForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:subtitleOffsetForDate:")]
-		CGPoint CalendarSubtitleOffsetForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		CGPoint Calendar_SubtitleOffsetForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(CGPoint)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance imageOffsetForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:imageOffsetForDate:")]
-		CGPoint CalendarImageOffsetForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		CGPoint Calendar_ImageOffsetForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(CGPoint)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance eventOffsetForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:eventOffsetForDate:")]
-		CGPoint CalendarEventOffsetForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		CGPoint Calendar_EventOffsetForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 
 		// @optional -(CGFloat)calendar:(FSCalendar * _Nonnull)calendar appearance:(FSCalendarAppearance * _Nonnull)appearance borderRadiusForDate:(NSDate * _Nonnull)date;
 		[Export("calendar:appearance:borderRadiusForDate:")]
-		nfloat CalendarBorderRadiusForDate(FSCalendarView calendar, FSCalendarAppearance appearance, NSDate date);
+		nfloat Calendar_BorderRadiusForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date);
 	}
 
 	// @interface FSCalendar : UIView
-    [BaseType(typeof(UIView), Name="FSCalendar")]
-	interface FSCalendarView
+	[BaseType(typeof(UIView))]
+	interface FSCalendar
 	{
 		[Wrap("WeakDelegate")]
 		[NullAllowed]
@@ -740,6 +635,10 @@ namespace FSCalendar
 		[Export("allowsMultipleSelection")]
 		bool AllowsMultipleSelection { get; set; }
 
+		// @property (assign, nonatomic) BOOL adjustsBoundingRectWhenChangingMonths;
+		[Export("adjustsBoundingRectWhenChangingMonths")]
+		bool AdjustsBoundingRectWhenChangingMonths { get; set; }
+
 		// @property (assign, nonatomic) BOOL pagingEnabled;
 		[Export("pagingEnabled")]
 		bool PagingEnabled { get; set; }
@@ -748,17 +647,13 @@ namespace FSCalendar
 		[Export("scrollEnabled")]
 		bool ScrollEnabled { get; set; }
 
-		// @property (assign, nonatomic) BOOL showsScopeHandle __attribute__((deprecated(" Use handleScopeGesture: instead")));
-		[Export("showsScopeHandle")]
-		bool ShowsScopeHandle { get; set; }
-
 		// @property (assign, nonatomic) CGFloat rowHeight;
 		[Export("rowHeight")]
 		nfloat RowHeight { get; set; }
 
 		// @property (readonly, nonatomic) FSCalendarAppearance * _Nonnull appearance;
 		[Export("appearance")]
-		FSCalendarAppearance CalendarAppearance { get; }
+		FSCalendarAppearance FSAppearance { get; }
 
 		// @property (readonly, nonatomic) NSDate * _Nonnull minimumDate;
 		[Export("minimumDate")]
@@ -836,12 +731,12 @@ namespace FSCalendar
 		void HandleScopeGesture(UIPanGestureRecognizer sender);
 	}
 
-	//// @interface IBExtension (FSCalendar)
-	//[Category]
-	//[BaseType(typeof(FSCalendar))]
-	//interface FSCalendar_IBExtension
-	//{
-	//}
+	// @interface IBExtension (FSCalendar)
+	[Category]
+	[BaseType(typeof(FSCalendar))]
+	interface FSCalendar_IBExtension
+	{
+	}
 
 	// @interface FSCalendarCalculator : NSObject
 	[BaseType(typeof(NSObject))]
@@ -849,7 +744,7 @@ namespace FSCalendar
 	{
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (readonly, nonatomic) NSInteger numberOfSections;
 		[Export("numberOfSections")]
@@ -857,7 +752,7 @@ namespace FSCalendar
 
 		// -(instancetype)initWithCalendar:(FSCalendar *)calendar;
 		[Export("initWithCalendar:")]
-		IntPtr Constructor(FSCalendarView calendar);
+		IntPtr Constructor(FSCalendar calendar);
 
 		// -(NSDate *)safeDateForDate:(NSDate *)date;
 		[Export("safeDateForDate:")]
@@ -928,16 +823,27 @@ namespace FSCalendar
 		void ReloadSections();
 	}
 
+    partial interface IFSCalendarCollectionViewInternalDelegate { }
+	// @protocol FSCalendarCollectionViewInternalDelegate <UICollectionViewDelegate>
+	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
+	interface FSCalendarCollectionViewInternalDelegate : IUICollectionViewDelegate
+	{
+		// @optional -(void)collectionViewDidFinishLayoutSubviews:(FSCalendarCollectionView *)collectionView;
+		[Export("collectionViewDidFinishLayoutSubviews:")]
+		void CollectionViewDidFinishLayoutSubviews(FSCalendarCollectionView collectionView);
+	}
+
 	// @interface FSCalendarCollectionView : UICollectionView
 	[BaseType(typeof(UICollectionView))]
 	interface FSCalendarCollectionView
 	{
-	}
+		[Wrap("WeakInternalDelegate")]
+		FSCalendarCollectionViewInternalDelegate InternalDelegate { get; set; }
 
-	// @interface FSCalendarSeparator : UICollectionReusableView
-	[BaseType(typeof(UICollectionReusableView))]
-	interface FSCalendarSeparator
-	{
+		// @property (nonatomic, weak) id<FSCalendarCollectionViewInternalDelegate> internalDelegate;
+		[NullAllowed, Export("internalDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakInternalDelegate { get; set; }
 	}
 
 	// @interface FSCalendarCollectionViewLayout : UICollectionViewLayout
@@ -946,11 +852,7 @@ namespace FSCalendar
 	{
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
-
-		// @property (assign, nonatomic) CGFloat interitemSpacing;
-		[Export("interitemSpacing")]
-		nfloat InteritemSpacing { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (assign, nonatomic) UIEdgeInsets sectionInsets;
 		[Export("sectionInsets", ArgumentSemantic.Assign)]
@@ -959,10 +861,6 @@ namespace FSCalendar
 		// @property (assign, nonatomic) UICollectionViewScrollDirection scrollDirection;
 		[Export("scrollDirection", ArgumentSemantic.Assign)]
 		UICollectionViewScrollDirection ScrollDirection { get; set; }
-
-		// @property (assign, nonatomic) CGSize headerReferenceSize;
-		[Export("headerReferenceSize", ArgumentSemantic.Assign)]
-		CGSize HeaderReferenceSize { get; set; }
 	}
 
 	//// @interface FSCalendarDelegationProxy : NSProxy
@@ -993,13 +891,13 @@ namespace FSCalendar
 	//	// +(FSCalendarDelegationProxy *)dataSourceProxy;
 	//	[Static]
 	//	[Export("dataSourceProxy")]
-	//	//[Verify(MethodToProperty)]
+	//	[Verify(MethodToProperty)]
 	//	FSCalendarDelegationProxy DataSourceProxy { get; }
 
 	//	// +(FSCalendarDelegationProxy *)delegateProxy;
 	//	[Static]
 	//	[Export("delegateProxy")]
-	//	//[Verify(MethodToProperty)]
+	//	[Verify(MethodToProperty)]
 	//	FSCalendarDelegationProxy DelegateProxy { get; }
 	//}
 
@@ -1009,7 +907,7 @@ namespace FSCalendar
 	{
 		// @property (nonatomic, weak) FSCalendar * calendar;
 		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
+		FSCalendar Calendar { get; set; }
 
 		// @property (nonatomic, weak) UILabel * titleLabel;
 		[Export("titleLabel", ArgumentSemantic.Weak)]
@@ -1024,43 +922,10 @@ namespace FSCalendar
 		void ConfigureAppearance();
 	}
 
-	// @interface FSCalendarScopeHandle : UIView <UIGestureRecognizerDelegate>
-	[BaseType(typeof(UIView))]
-	interface FSCalendarScopeHandle : IUIGestureRecognizerDelegate
-	{
-		// @property (nonatomic, weak) UIPanGestureRecognizer * panGesture;
-		[Export("panGesture", ArgumentSemantic.Weak)]
-		UIPanGestureRecognizer PanGesture { get; set; }
-
-		// @property (nonatomic, weak) FSCalendar * calendar;
-		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
-
-		// -(void)handlePan:(id)sender;
-		[Export("handlePan:")]
-		void HandlePan(NSObject sender);
-	}
-
 	// @interface FSCalendarTransitionCoordinator : NSObject <UIGestureRecognizerDelegate>
 	[BaseType(typeof(NSObject))]
 	interface FSCalendarTransitionCoordinator : IUIGestureRecognizerDelegate
 	{
-		// @property (nonatomic, weak) FSCalendar * calendar;
-		[Export("calendar", ArgumentSemantic.Weak)]
-		FSCalendarView Calendar { get; set; }
-
-		// @property (nonatomic, weak) FSCalendarCollectionView * collectionView;
-		[Export("collectionView", ArgumentSemantic.Weak)]
-		FSCalendarCollectionView CollectionView { get; set; }
-
-		// @property (nonatomic, weak) FSCalendarCollectionViewLayout * collectionViewLayout;
-		[Export("collectionViewLayout", ArgumentSemantic.Weak)]
-		FSCalendarCollectionViewLayout CollectionViewLayout { get; set; }
-
-		// @property (assign, nonatomic) FSCalendarTransition transition;
-		[Export("transition", ArgumentSemantic.Assign)]
-		FSCalendarTransition Transition { get; set; }
-
 		// @property (assign, nonatomic) FSCalendarTransitionState state;
 		[Export("state", ArgumentSemantic.Assign)]
 		FSCalendarTransitionState State { get; set; }
@@ -1075,7 +940,7 @@ namespace FSCalendar
 
 		// -(instancetype)initWithCalendar:(FSCalendar *)calendar;
 		[Export("initWithCalendar:")]
-		IntPtr Constructor(FSCalendarView calendar);
+		IntPtr Constructor(FSCalendar calendar);
 
 		// -(void)performScopeTransitionFromScope:(FSCalendarScope)fromScope toScope:(FSCalendarScope)toScope animated:(BOOL)animated;
 		[Export("performScopeTransitionFromScope:toScope:animated:")]
@@ -1084,6 +949,10 @@ namespace FSCalendar
 		// -(void)performBoundingRectTransitionFromMonth:(NSDate *)fromMonth toMonth:(NSDate *)toMonth duration:(CGFloat)duration;
 		[Export("performBoundingRectTransitionFromMonth:toMonth:duration:")]
 		void PerformBoundingRectTransitionFromMonth(NSDate fromMonth, NSDate toMonth, nfloat duration);
+
+		// -(CGRect)boundingRectForScope:(FSCalendarScope)scope page:(NSDate *)page;
+		[Export("boundingRectForScope:page:")]
+		CGRect BoundingRectForScope(FSCalendarScope scope, NSDate page);
 
 		// -(void)handleScopeGesture:(id)sender;
 		[Export("handleScopeGesture:")]
@@ -1110,127 +979,113 @@ namespace FSCalendar
 		[Export("targetPage", ArgumentSemantic.Strong)]
 		NSDate TargetPage { get; set; }
 
-		// @property (assign, nonatomic) NSInteger focusedRowNumber;
-		[Export("focusedRowNumber")]
-		nint FocusedRowNumber { get; set; }
+		// @property (assign, nonatomic) NSInteger focusedRow;
+		[Export("focusedRow")]
+		nint FocusedRow { get; set; }
 
-		// @property (assign, nonatomic) NSDate * focusedDate;
-		[Export("focusedDate", ArgumentSemantic.Assign)]
+		// @property (nonatomic, strong) NSDate * focusedDate;
+		[Export("focusedDate", ArgumentSemantic.Strong)]
 		NSDate FocusedDate { get; set; }
 
-		// @property (nonatomic, strong) NSDate * firstDayOfMonth;
-		[Export("firstDayOfMonth", ArgumentSemantic.Strong)]
-		NSDate FirstDayOfMonth { get; set; }
+		// @property (assign, nonatomic) FSCalendarScope targetScope;
+		[Export("targetScope", ArgumentSemantic.Assign)]
+		FSCalendarScope TargetScope { get; set; }
+
+		// -(void)revert;
+		[Export("revert")]
+		void Revert();
 	}
 
 	// @interface Dynamic (FSCalendar)
 	[Category]
-	[BaseType(typeof(FSCalendarView))]
+	[BaseType(typeof(FSCalendar))]
 	interface FSCalendar_Dynamic
 	{
-        // @property (readonly, nonatomic) FSCalendarCollectionView * collectionView;
-        //[Export("collectionView")]
-        //FSCalendarCollectionView CollectionView { get; }
-        [Export("getCollectionView")]
-        FSCalendarCollectionView CollectionView();
+		// @property (readonly, nonatomic) FSCalendarCollectionView * collectionView;
+		//[Export("collectionView")]
+		//FSCalendarCollectionView CollectionView { get; }
+		[Export("getCollectionView")]
+		FSCalendarCollectionView CollectionView();
 
-        // @property (readonly, nonatomic) FSCalendarScopeHandle * scopeHandle;
-        //[Export("scopeHandle")]
-        //FSCalendarScopeHandle ScopeHandle { get; }
-        [Export("getScopeHandle")]
-        FSCalendarScopeHandle ScopeHandle();
+		// @property (readonly, nonatomic) FSCalendarCollectionViewLayout * collectionViewLayout;
+		//[Export("collectionViewLayout")]
+		//FSCalendarCollectionViewLayout CollectionViewLayout { get; }
+		[Export("getCollectionViewLayout")]
+		FSCalendarCollectionViewLayout CollectionViewLayout();
 
-        // @property (readonly, nonatomic) FSCalendarCollectionViewLayout * collectionViewLayout;
-        //[Export("collectionViewLayout")]
-        //FSCalendarCollectionViewLayout CollectionViewLayout { get; }
-        [Export("getCollectionViewLayout")]
-        FSCalendarCollectionViewLayout CollectionViewLayout();
 
-        // @property (readonly, nonatomic) FSCalendarTransitionCoordinator * transitionCoordinator;
-        //[Export("transitionCoordinator")]
-        //FSCalendarTransitionCoordinator TransitionCoordinator { get; }
-        [Export("getTransitionCoordinator")]
-        FSCalendarTransitionCoordinator TransitionCoordinator();
+		// @property (readonly, nonatomic) FSCalendarTransitionCoordinator * transitionCoordinator;
+		//[Export("transitionCoordinator")]
+		//FSCalendarTransitionCoordinator TransitionCoordinator { get; }
+		[Export("getTransitionCoordinator")]
+		FSCalendarTransitionCoordinator TransitionCoordinator();
 
-        // @property (readonly, nonatomic) FSCalendarCalculator * calculator;
-        //[Export("calculator")]
-        //FSCalendarCalculator Calculator { get; }
-        [Export("getCalculator")]
-        FSCalendarCalculator Calculator();
+		// @property (readonly, nonatomic) FSCalendarCalculator * calculator;
+		//[Export("calculator")]
+		//FSCalendarCalculator Calculator { get; }
+		[Export("calculator")]
+		nfloat Calculator();
+		[Export("setCalculator:")]
+		void SetCalculator(FSCalendarCalculator calculator);
 
-        // @property (readonly, nonatomic) BOOL floatingMode;
-        //[Export("floatingMode")]
-        //bool FloatingMode { get; }
-        [Export("getFloatingMode")]
-        bool FloatingMode();
+		// @property (readonly, nonatomic) BOOL floatingMode;
+		//[Export("floatingMode")]
+		//bool FloatingMode { get; }
+		[Export("getFloatingMode")]
+		bool FloatingMode();
 
-        // @property (readonly, nonatomic) NSArray * visibleStickyHeaders;
-        //[Export("visibleStickyHeaders")]
-        ////[Verify(StronglyTypedNSArray)]
-        //NSObject[] VisibleStickyHeaders { get; }
-        [Export("getVisibleStickyHeaders")]
-        //[Verify(StronglyTypedNSArray)]
-        NSObject[] VisibleStickyHeaders();
+		// @property (readonly, nonatomic) NSArray * visibleStickyHeaders;
+		//[Export("visibleStickyHeaders")]
+		////[Verify(StronglyTypedNSArray)]
+		//NSObject[] VisibleStickyHeaders { get; }
+		[Export("getVisibleStickyHeaders")]
+		//[Verify(StronglyTypedNSArray)]
+		NSObject[] VisibleStickyHeaders();
 
-        // @property (readonly, nonatomic) CGFloat preferredHeaderHeight;
-        //[Export("preferredHeaderHeight")]
-        //nfloat PreferredHeaderHeight { get; }
-        [Export("getPreferredHeaderHeight")]
-        nfloat PreferredHeaderHeight();
+		// @property (readonly, nonatomic) CGFloat preferredHeaderHeight;
+		//[Export("preferredHeaderHeight")]
+		//nfloat PreferredHeaderHeight { get; }
+		[Export("getPreferredHeaderHeight")]
+		nfloat PreferredHeaderHeight();
 
-        // @property (readonly, nonatomic) CGFloat preferredWeekdayHeight;
-        //[Export("preferredWeekdayHeight")]
-        //nfloat PreferredWeekdayHeight { get; }
-        [Export("getPreferredWeekdayHeight")]
-        nfloat PreferredWeekdayHeight();
+		// @property (readonly, nonatomic) CGFloat preferredWeekdayHeight;
+		//[Export("preferredWeekdayHeight")]
+		//nfloat PreferredWeekdayHeight { get; }
+		[Export("getPreferredWeekdayHeight")]
+		nfloat PreferredWeekdayHeight();
 
-		// @property (readonly, nonatomic) UIView * bottomBorder;
-		//[Export("bottomBorder")]
-		//UIView BottomBorder { get; }
-		[Export("getBottomBorder")]
-        UIView GetBottomBorder();
+		// @property (readonly, nonatomic) NSCalendar * gregorian;
+		//[Export("gregorian")]
+		//NSCalendar Gregorian { get; }
+		[Export("getGregorian")]
+		NSCalendar GetGregorian();
 
-        // @property (readonly, nonatomic) NSCalendar * gregorian;
-        //[Export("gregorian")]
-        //NSCalendar Gregorian { get; }
-        [Export("getGregorian")]
-        NSCalendar GetGregorian();
+		// @property (readonly, nonatomic) NSDateFormatter * formatter;
+		//[Export("formatter")]
+		//NSDateFormatter Formatter { get; }
+		[Export("getFormatter")]
+		NSDateFormatter GetFormatter();
 
-		// @property (readonly, nonatomic) NSDateComponents * components;
-		//[Export("components")]
-		//NSDateComponents Components { get; }
-		[Export("getComponents")]
-        NSDateComponents GetComponents();
+		// @property (readonly, nonatomic) UIView * contentView;
+		//[Export("contentView")]
+		//UIView ContentView { get; }
+		[Export("getContentView")]
+		UIView GetContentView();
 
-        // @property (readonly, nonatomic) NSDateFormatter * formatter;
-        //[Export("formatter")]
-        //NSDateFormatter Formatter { get; }
-        [Export("getFormatter")]
-        NSDateFormatter GetFormatter();
 
-        // @property (readonly, nonatomic) UIView * contentView;
-        //[Export("contentView")]
-        //UIView ContentView { get; }
-        [Export("getContentView")]
-        UIView GetContentView();
+		// @property (readonly, nonatomic) UIView * daysContainer;
+		//[Export("daysContainer")]
+		//UIView DaysContainer { get; }
+		[Export("getDaysContainer")]
+		UIView GetDaysContainer();
 
-        // @property (readonly, nonatomic) UIView * daysContainer;
-        //[Export("daysContainer")]
-        //UIView DaysContainer { get; }
-        [Export("getDaysContainer")]
-        UIView GetDaysContainer();
-
-        // @property (assign, nonatomic) BOOL needsAdjustingViewFrame;
-        //[Export("needsAdjustingViewFrame")]
-        //bool NeedsAdjustingViewFrame { get; set; }
-        [Export("getNeedsAdjustingViewFrame")]
-        bool GetNeedsAdjustingViewFrame();
-        [Export("setNeedsAdjustingViewFrame:")]
-        void SetNeedsAdjustingViewFrame(bool needAdjusting);
-
-		// -(void)invalidateHeaders;
-		[Export("invalidateHeaders")]
-		void InvalidateHeaders();
+		// @property (assign, nonatomic) BOOL needsAdjustingViewFrame;
+		//[Export("needsAdjustingViewFrame")]
+		//bool NeedsAdjustingViewFrame { get; set; }
+		[Export("getNeedsAdjustingViewFrame")]
+		bool GetNeedsAdjustingViewFrame();
+		[Export("setNeedsAdjustingViewFrame:")]
+		void SetNeedsAdjustingViewFrame(bool needAdjusting);
 
 		// -(void)adjustMonthPosition;
 		[Export("adjustMonthPosition")]
@@ -1239,14 +1094,6 @@ namespace FSCalendar
 		// -(void)configureAppearance;
 		[Export("configureAppearance")]
 		void ConfigureAppearance();
-
-		// -(BOOL)isPageInRange:(NSDate *)page;
-		[Export("isPageInRange:")]
-		bool IsPageInRange(NSDate page);
-
-		// -(BOOL)isDateInRange:(NSDate *)date;
-		[Export("isDateInRange:")]
-		bool IsDateInRange(NSDate date);
 
 		// -(CGSize)sizeThatFits:(CGSize)size scope:(FSCalendarScope)scope;
 		[Export("sizeThatFits:scope:")]
@@ -1258,37 +1105,39 @@ namespace FSCalendar
 	[BaseType(typeof(FSCalendarAppearance))]
 	interface FSCalendarAppearance_Dynamic
 	{
-        // @property (readwrite, nonatomic) FSCalendar * calendar;
-        //[Export("calendar", ArgumentSemantic.Assign)]
-        //FSCalendar Calendar { get; set; }
-        [Export("getCalendar")]
-        FSCalendarView Calendar();
+		// @property (readwrite, nonatomic) FSCalendar * calendar;
+		//[Export("calendar", ArgumentSemantic.Assign)]
+		//FSCalendar Calendar { get; set; }
+		[Export("getCalendar")]
+		FSCalendar Calendar();
 		[Export("setCalendar:")]
-        void SetCalendar(FSCalendarView calendar);
+		void SetCalendar(FSCalendar calendar);
 
-        // @property (readonly, nonatomic) NSDictionary * backgroundColors;
-        //[Export("backgroundColors")]
-        //NSDictionary BackgroundColors { get; }
-        [Export("getBackgroundColors")]
-        NSDictionary BackgroundColors();
+		// @property (readonly, nonatomic) NSDictionary * backgroundColors;
+		//[Export("backgroundColors")]
+		//NSDictionary BackgroundColors { get; }
+		[Export("getBackgroundColors")]
+		NSDictionary BackgroundColors();
 
-        // @property (readonly, nonatomic) NSDictionary * titleColors;
-        //[Export("titleColors")]
-        //NSDictionary TitleColors { get; }
-        [Export("getTitleColors")]
-        NSDictionary TitleColors();
+		// @property (readonly, nonatomic) NSDictionary * titleColors;
+		//[Export("titleColors")]
+		//NSDictionary TitleColors { get; }
+		[Export("getTitleColors")]
+		NSDictionary TitleColors();
 
-        // @property (readonly, nonatomic) NSDictionary * subtitleColors;
-        //[Export("subtitleColors")]
-        //NSDictionary SubtitleColors { get; }
-        [Export("getSubtitleColors")]
-        NSDictionary SubtitleColors();
 
-        // @property (readonly, nonatomic) NSDictionary * borderColors;
-        //[Export("borderColors")]
-        //NSDictionary BorderColors { get; }		
-        [Export("getBorderColors")]
-        NSDictionary BorderColors();
+		// @property (readonly, nonatomic) NSDictionary * subtitleColors;
+		//[Export("subtitleColors")]
+		//NSDictionary SubtitleColors { get; }
+		[Export("getSubtitleColors")]
+		NSDictionary SubtitleColors();
+
+		// @property (readonly, nonatomic) NSDictionary * borderColors;
+		//[Export("borderColors")]
+		//NSDictionary BorderColors { get; }		
+		[Export("getBorderColors")]
+		NSDictionary BorderColors();
+
 	}
 
 	// @interface Dynamic (FSCalendarWeekdayView)
@@ -1296,11 +1145,11 @@ namespace FSCalendar
 	[BaseType(typeof(FSCalendarWeekdayView))]
 	interface FSCalendarWeekdayView_Dynamic
 	{
-        // @property (readwrite, nonatomic) FSCalendar * calendar;
-        //[Export("calendar", ArgumentSemantic.Assign)]
-        //FSCalendar Calendar { get; set; }
-        [Export("getCalendar")]
-        FSCalendarView Calendar();
+		// @property (readwrite, nonatomic) FSCalendar * calendar;
+		[Export("calendar")]
+		FSCalendar Calendar();
+		[Export("setCalendar:")]
+		void SetCalendar(FSCalendar calendar);
 	}
 
 	// @interface Dynamic (FSCalendarCollectionViewLayout)
@@ -1308,11 +1157,12 @@ namespace FSCalendar
 	[BaseType(typeof(FSCalendarCollectionViewLayout))]
 	interface FSCalendarCollectionViewLayout_Dynamic
 	{
-        // @property (readonly, nonatomic) CGSize estimatedItemSize;
-        //[Export("estimatedItemSize")]
-        //CGSize EstimatedItemSize { get; }
-        [Export("getEstimatedItemSize")]
-        CGSize EstimatedItemSize();
+		// @property (readonly, nonatomic) CGSize estimatedItemSize;
+		//[Export("estimatedItemSize")]
+		//CGSize EstimatedItemSize { get; }
+		[Export("getEstimatedItemSize")]
+		CGSize EstimatedItemSize();
+
 	}
 
 	//// @interface  (FSCalendarDelegationProxy) <FSCalendarDataSource, FSCalendarDelegate, FSCalendarDelegateAppearance>
@@ -1327,47 +1177,47 @@ namespace FSCalendar
 	[BaseType(typeof(UIView))]
 	interface UIView_FSCalendarExtensions
 	{
-        // @property (nonatomic) CGFloat fs_width;
-        [Export("fs_width")]
-        //nfloat Fs_width { get; set; }
-        nfloat GetFs_width();
-        [Export("setFs_width:")]
-        void SetFs_width(nfloat width);
+		// @property (nonatomic) CGFloat fs_width;
+		[Export("fs_width")]
+		//nfloat Fs_width { get; set; }
+		nfloat GetFs_width();
+		[Export("setFs_width:")]
+		void SetFs_width(nfloat width);
 
-        // @property (nonatomic) CGFloat fs_height;
-        [Export("fs_height")]
-        //nfloat Fs_height { get; set; }
-        nfloat GetFs_height();
-        [Export("setFs_height:")]
-        void SetFs_height(nfloat height);
+		// @property (nonatomic) CGFloat fs_height;
+		[Export("fs_height")]
+		//nfloat Fs_height { get; set; }
+		nfloat GetFs_height();
+		[Export("setFs_height:")]
+		void SetFs_height(nfloat height);
 
-        // @property (nonatomic) CGFloat fs_top;
-        [Export("fs_top")]
-        //nfloat Fs_top { get; set; }
-        nfloat GetFs_top();
-        [Export("setFs_top:")]
-        void SetFs_top(nfloat top);
+		// @property (nonatomic) CGFloat fs_top;
+		[Export("fs_top")]
+		//nfloat Fs_top { get; set; }
+		nfloat GetFs_top();
+		[Export("setFs_top:")]
+		void SetFs_top(nfloat top);
 
-        // @property (nonatomic) CGFloat fs_left;
-        [Export("fs_left")]
-        //nfloat Fs_left { get; set; }
-        nfloat GetFs_left();
-        [Export("SetFs_left:")]
-        void SetFs_left(nfloat left);
+		// @property (nonatomic) CGFloat fs_left;
+		[Export("fs_left")]
+		//nfloat Fs_left { get; set; }
+		nfloat GetFs_left();
+		[Export("SetFs_left:")]
+		void SetFs_left(nfloat left);
 
-        // @property (nonatomic) CGFloat fs_bottom;
-        [Export("fs_bottom")]
-        //nfloat Fs_bottom { get; set; }
-        nfloat GetFs_bottom();
-        [Export("SetFs_bottom:")]
-        void SetFs_bottom(nfloat bottom);
+		// @property (nonatomic) CGFloat fs_bottom;
+		[Export("fs_bottom")]
+		//nfloat Fs_bottom { get; set; }
+		nfloat GetFs_bottom();
+		[Export("SetFs_bottom:")]
+		void SetFs_bottom(nfloat bottom);
 
-        // @property (nonatomic) CGFloat fs_right;
-        [Export("fs_right")]
-        //nfloat Fs_right { get; set; }
-        nfloat GetFs_right();
-        [Export("setFs_right:")]
-        void setFs_right(nfloat right);
+		// @property (nonatomic) CGFloat fs_right;
+		[Export("fs_right")]
+		//nfloat Fs_right { get; set; }
+		nfloat GetFs_right();
+		[Export("setFs_right:")]
+		void setFs_right(nfloat right);
 	}
 
 	// @interface FSCalendarExtensions (CALayer)
@@ -1375,30 +1225,6 @@ namespace FSCalendar
 	[BaseType(typeof(CALayer))]
 	interface CALayer_FSCalendarExtensions
 	{
-		//// @property (nonatomic) CGFloat fs_width;
-		//[Export("fs_width")]
-		//nfloat Fs_width { get; set; }
-
-		//// @property (nonatomic) CGFloat fs_height;
-		//[Export("fs_height")]
-		//nfloat Fs_height { get; set; }
-
-		//// @property (nonatomic) CGFloat fs_top;
-		//[Export("fs_top")]
-		//nfloat Fs_top { get; set; }
-
-		//// @property (nonatomic) CGFloat fs_left;
-		//[Export("fs_left")]
-		//nfloat Fs_left { get; set; }
-
-		//// @property (nonatomic) CGFloat fs_bottom;
-		//[Export("fs_bottom")]
-		//nfloat Fs_bottom { get; set; }
-
-		//// @property (nonatomic) CGFloat fs_right;
-		//[Export("fs_right")]
-		//nfloat Fs_right { get; set; }
-
 		// @property (nonatomic) CGFloat fs_width;
 		[Export("fs_width")]
 		//nfloat Fs_width { get; set; }
@@ -1557,16 +1383,9 @@ namespace FSCalendar
 		NSObject Fs_performSelector(Selector selector, [NullAllowed] NSObject firstObject, IntPtr varArgs);
 	}
 
-	//[Static]
-	//[Verify(ConstantsInterfaceAssociation)]
-	//partial interface Constants
-	//{
-	//	// extern double FSCalendarVersionNumber;
-	//	[Field("FSCalendarVersionNumber", "__Internal")]
-	//	double FSCalendarVersionNumber { get; }
-
-	//	// extern const unsigned char [] FSCalendarVersionString;
-	//	[Field("FSCalendarVersionString", "__Internal")]
-	//	byte[] FSCalendarVersionString { get; }
-	//}
+	// @interface FSCalendarSeparatorDecorationView : UICollectionReusableView
+	[BaseType(typeof(UICollectionReusableView))]
+	interface FSCalendarSeparatorDecorationView
+	{
+	}
 }

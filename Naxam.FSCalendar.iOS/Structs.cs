@@ -2,29 +2,21 @@
 using ObjCRuntime;
 using Foundation;
 
-namespace FSCalendar
+namespace FSCalendarAbstractions
 {
-    [Native]
-	public enum FSCalendarCellShape : ulong
-	{
-	    Circle = 0,
-	    Rectangle = 1
-	}
-
-	[Native]
-	public enum FSCalendarUnit : ulong
-	{
-	    Month = NSCalendarUnit.Month,
-	    WeekOfYear = NSCalendarUnit.WeekOfYear,
-	    Day = NSCalendarUnit.Day
-	}
-
-	//static class CFunctions
+ //   [Native]
+	//public enum FSCalendarCellShape : ulong
 	//{
-	//    // void FSCalendarSliceCake (CGFloat cake, NSInteger count, CGFloat *pieces);
-	//    [DllImport ("__Internal")]
-	//    [Verify (PlatformInvoke)]
-	//    static extern unsafe void FSCalendarSliceCake (nfloat cake, long count, nfloat* pieces);
+	//    Circle = 0,
+	//    Rectangle = 1
+	//}
+
+	//[Native]
+	//public enum FSCalendarUnit : ulong
+	//{
+	//    Month = NSCalendarUnit.Month,
+	//    WeekOfYear = NSCalendarUnit.WeekOfYear,
+	//    Day = NSCalendarUnit.Day
 	//}
 
 	[Native]
@@ -95,13 +87,13 @@ namespace FSCalendar
 	    public long column;
 	}
 
-	[Native]
-	public enum FSCalendarTransition : ulong
-	{
-	    None,
-	    MonthToWeek,
-	    WeekToMonth
-	}
+	//[Native]
+	//public enum FSCalendarTransition : ulong
+	//{
+	//    None,
+	//    MonthToWeek,
+	//    WeekToMonth
+	//}
 
 	[Native]
 	public enum FSCalendarTransitionState : ulong

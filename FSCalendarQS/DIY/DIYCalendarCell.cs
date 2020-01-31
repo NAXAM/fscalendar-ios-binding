@@ -1,6 +1,6 @@
 ﻿using System;
 using CoreAnimation;
-using FSCalendar;
+using FSCalendarAbstractions;
 using UIKit;
 using CoreGraphics;
 using Foundation;
@@ -100,7 +100,7 @@ namespace FSCalendarQS.DIY
         public override void ConfigureAppearance()
         {
             base.ConfigureAppearance();
-            if (IsPlaceholder) {
+            if (Placeholder) {
                 TitleLabel.TextColor = UIColor.LightGray;
                 EventIndicator.Hidden = true;
             }

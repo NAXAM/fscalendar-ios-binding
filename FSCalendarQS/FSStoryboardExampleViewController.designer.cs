@@ -14,5 +14,25 @@ namespace FSCalendarQS
     [Register ("FSStoryboardExampleViewController")]
     partial class FSStoryboardExampleViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        FSCalendarAbstractions.FSCalendar calendar { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint calendarHeightConstraint { get; set; }
+
+        void ReleaseDesignerOutlets ()
+        {
+            if (calendar != null) {
+                calendar.Dispose ();
+                calendar = null;
+            }
+
+            if (calendarHeightConstraint != null) {
+                calendarHeightConstraint.Dispose ();
+                calendarHeightConstraint = null;
+            }
+        }
     }
 }

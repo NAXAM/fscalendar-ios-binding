@@ -18,7 +18,7 @@ using ObjCRuntime;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Naxam Co., LTD")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("(c) 2017 Naxam")]
+[assembly: AssemblyCopyright("(c) 2020 Naxam")]
 [assembly: AssemblyTrademark("Naxam")]
 [assembly: AssemblyCulture("")]
 
@@ -33,5 +33,5 @@ using ObjCRuntime;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-[assembly: LinkWith("FSCalendar.framework", LinkTarget.ArmV7 | LinkTarget.ArmV7s | LinkTarget.Simulator, "-ObjC", ForceLoad = true, Frameworks = "Foundation UIKit CoreGraphics")]
+[assembly: LinkWith("libFSCalendar-library.a", LinkTarget.ArmV7 | LinkTarget.ArmV7s | LinkTarget.Simulator, "-ObjC", ForceLoad = true, Frameworks = "Foundation UIKit CoreGraphics")]
 //[assembly: LinkWith("FSCalendar.framework", LinkTarget.ArmV7 | LinkTarget.Simulator | LinkTarget.Simulator64, ForceLoad = true, SmartLink = true, LinkerFlags = "-ObjC -all_load -fobjc-arc", Frameworks = "Foundation UIKit CoreGraphics CoreAnimation")]

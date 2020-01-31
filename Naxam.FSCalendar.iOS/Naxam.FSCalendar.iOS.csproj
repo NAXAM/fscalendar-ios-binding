@@ -41,8 +41,8 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="FSCalendar.framework">
-      <Kind>Framework</Kind>
+    <NativeReference Include="libFSCalendar-library.a">
+      <Kind>Static</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
