@@ -83,6 +83,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Naxam.FSCalendar.iOS">
+      <HintPath>..\packages\Naxam.FSCalendar.iOS.2.8.1.1\lib\Xamarin.iOS10\Naxam.FSCalendar.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -108,6 +111,7 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -137,12 +141,6 @@
     <Compile Include="RangePicker\RangePickerCell.cs" />
     <Compile Include="DIY\DIYExampleViewController.cs" />
     <Compile Include="DIY\DIYCalendarCell.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Naxam.FSCalendar.iOS\Naxam.FSCalendar.iOS\Naxam.FSCalendar.iOS.csproj">
-      <Project>{04E56122-1811-4C52-B5EA-EBFDC7754265}</Project>
-      <Name>Naxam.FSCalendar.iOS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -267,7 +267,7 @@ namespace FSCalendarAbstractions
 
         //// -(instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((objc_requires_super));
         //[Export("initWithCoder:")]
-        //[RequiresSuper]
+        ////[RequiresSuper]
         //IntPtr Constructor(NSCoder aDecoder);
 
         //// -(void)layoutSubviews __attribute__((objc_requires_super));
@@ -277,7 +277,8 @@ namespace FSCalendarAbstractions
 
         // -(void)configureAppearance __attribute__((objc_requires_super));
         [Export("configureAppearance")]
-        void ConfigureAppearance();
+		[RequiresSuper]
+		void ConfigureAppearance();
 
         // -(UIColor *)colorForCurrentStateInDictionary:(NSDictionary *)dictionary;
         [Export("colorForCurrentStateInDictionary:")]
