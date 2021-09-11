@@ -1,106 +1,92 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using ObjCRuntime;
-using Foundation;
 
 namespace FSCalendarAbstractions
 {
- //   [Native]
-	//public enum FSCalendarCellShape : ulong
-	//{
-	//    Circle = 0,
-	//    Rectangle = 1
-	//}
+    [Native]
+    public enum FSCalendarCellState : long
+    {
+        Normal = 0,
+        Selected = 1,
+        Placeholder = 1L << 1,
+        Disabled = 1L << 2,
+        Today = 1L << 3,
+        Weekend = 1L << 4,
+        TodaySelected = Today | Selected
+    }
 
-	//[Native]
-	//public enum FSCalendarUnit : ulong
-	//{
-	//    Month = NSCalendarUnit.Month,
-	//    WeekOfYear = NSCalendarUnit.WeekOfYear,
-	//    Day = NSCalendarUnit.Day
-	//}
+    [Native]
+    public enum FSCalendarSeparators : ulong
+    {
+        None = 0,
+        InterRows = 1
+    }
 
-	[Native]
-	public enum FSCalendarCellState : long
-	{
-	    Normal = 0,
-	    Selected = 1,
-	    Placeholder = 1 << 1,
-	    Disabled = 1 << 2,
-	    Today = 1 << 3,
-	    Weekend = 1 << 4,
-	    TodaySelected = Today | Selected
-	}
+    [Flags]
+    [Native]
+    public enum FSCalendarCaseOptions : ulong
+    {
+        HeaderUsesDefaultCase = 0x0,
+        HeaderUsesUpperCase = 1uL << 0,
+        HeaderUsesCapitalized = 1uL << 1,
+        WeekdayUsesDefaultCase = 0uL << 4,
+        WeekdayUsesUpperCase = 1uL << 4,
+        WeekdayUsesSingleUpperCase = 2uL << 4
+    }
 
-	[Native]
-	public enum FSCalendarSeparators : ulong
-	{
-	    None = 0,
-	    InterRows = 1
-	}
+    [Native]
+    public enum FSCalendarScope : ulong
+    {
+        Month,
+        Week
+    }
 
-	[Native]
-	public enum FSCalendarCaseOptions : ulong
-	{
-	    HeaderUsesDefaultCase = 0,
-	    HeaderUsesUpperCase = 1,
-	    WeekdayUsesDefaultCase = 0 << 4,
-	    WeekdayUsesUpperCase = 1 << 4,
-	    WeekdayUsesSingleUpperCase = 2 << 4
-	}
+    [Native]
+    public enum FSCalendarScrollDirection : ulong
+    {
+        Vertical,
+        Horizontal
+    }
 
-	[Native]
-	public enum FSCalendarScope : ulong
-	{
-	    Month,
-	    Week
-	}
+    [Native]
+    public enum FSCalendarPlaceholderType : ulong
+    {
+        None = 0,
+        FillHeadTail = 1,
+        FillSixRows = 2
+    }
 
-	[Native]
-	public enum FSCalendarScrollDirection : ulong
-	{
-	    Vertical,
-	    Horizontal
-	}
+    [Native]
+    public enum FSCalendarMonthPosition : ulong
+    {
+        Previous,
+        Current,
+        Next,
+        NotFound = ulong.MaxValue
+    }
 
-	[Native]
-	public enum FSCalendarPlaceholderType : ulong
-	{
-	    None = 0,
-	    FillHeadTail = 1,
-	    FillSixRows = 2
-	}
+    [StructLayout(LayoutKind.Sequential)]
+    public struct FSCalendarCoordinate
+    {
+        public nint row;
 
-	[Native]
-	public enum FSCalendarMonthPosition : ulong
-	{
-	    Previous,
-	    Current,
-	    Next,
-	    NotFound = ulong.MaxValue
-	}
+        public nint column;
+    }
 
-	[System.Runtime.InteropServices.StructLayout (System.Runtime.InteropServices.LayoutKind.Sequential)]
-	public struct FSCalendarCoordinate
-	{
-	    public long row;
+    [Native]
+    public enum FSCalendarTransition : ulong
+    {
+        None,
+        MonthToWeek,
+        WeekToMonth
+    }
 
-	    public long column;
-	}
-
-	//[Native]
-	//public enum FSCalendarTransition : ulong
-	//{
-	//    None,
-	//    MonthToWeek,
-	//    WeekToMonth
-	//}
-
-	[Native]
-	public enum FSCalendarTransitionState : ulong
-	{
-	    Idle,
-	    Changing,
-	    Finishing
-	}
-
+    [Native]
+    public enum FSCalendarTransitionState : ulong
+    {
+        Idle,
+        Changing,
+        Finishing
+    }
 }

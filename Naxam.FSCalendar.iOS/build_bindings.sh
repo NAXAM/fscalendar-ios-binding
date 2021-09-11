@@ -27,3 +27,5 @@ rm -Rf "build"
 
 echo "Verify results"
 lipo -info "FSCalendar.framework/FSCalendar"
+
+sharpie bind --sdk=iphoneos --namespace=FSCalendar -scope FSCalendar.framework/Headers/ FSCalendar.framework/Headers/*.h
