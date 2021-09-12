@@ -2,17 +2,17 @@
 <package >
   <metadata>
     <id>Naxam.FSCalendar.iOS</id>
-    <version>2.8.1.1</version>
-    <authors>SignKeys</authors>
-    <owners>SIGNKEYS COMPANY LIMITED</owners>
+    <version>2.8.3</version>
+    <authors>tuyen</authors>
+    <owners>NAXAM COMPANY LIMITED</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/NAXAM/fscalendar-ios-binding</projectUrl>
     <iconUrl>https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/19430128_1394919697251442_2614019130355005300_n.png?oh=2d6684c90177b2214155e8c4784f49c5&amp;oe=5A0B0567</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <title>SignKeys - FSCalendar</title>
+    <title>NAXAM - FSCalendar</title>
     <description>Xamarin Binding Library - FSCalendar</description>
-    <releaseNotes>FSCalendar 2.8.1</releaseNotes>
-    <copyright>Copyright 2020 SignKeys</copyright>
+    <releaseNotes>FSCalendar 2.8.3</releaseNotes>
+    <copyright>Copyright 2021 NAXAM</copyright>
     <tags>Xamarin.iOS fscalendar calendar date-picker date-selector naxam</tags>
     <dependencies>
         <group targetFramework="Xamarin.iOS10">
