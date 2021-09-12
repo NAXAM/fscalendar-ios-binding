@@ -1050,10 +1050,6 @@ namespace FSCalendarAbstractions
         [Export("calendar", ArgumentSemantic.Weak)]
         FSCalendar Calendar { get; set; }
 
-        // @property (assign, nonatomic) CGFloat interitemSpacing;
-        [Export("interitemSpacing")]
-        nfloat InteritemSpacing { get; set; }
-
         // @property (assign, nonatomic) UIEdgeInsets sectionInsets;
         [Export("sectionInsets", ArgumentSemantic.Assign)]
         UIEdgeInsets SectionInsets { get; set; }
