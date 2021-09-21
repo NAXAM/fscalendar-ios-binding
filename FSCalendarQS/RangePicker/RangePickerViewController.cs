@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using Foundation;
 using UIKit;
 using CoreGraphics;
@@ -28,15 +28,15 @@ namespace FSCalendarQS.RangePicker
             base.LoadView();
             View = new UIView(UIScreen.MainScreen.Bounds)
             {
-                BackgroundColor = UIColor.White
+                BackgroundColor = UIColor.SystemBackgroundColor
             };
             Calendar = new FSCalendar()
             {
                 Frame = new CGRect(0,
-                                   NavigationController.NavigationBar.Frame.GetMaxY(),
-                                   View.Frame.Width,
-                                   View.Frame.Height - NavigationController.NavigationBar.Frame.GetMaxY()
-                                  ),
+                    NavigationController.NavigationBar.Frame.GetMaxY(),
+                    View.Frame.Width,
+                    View.Frame.Height - NavigationController.NavigationBar.Frame.GetMaxY()
+                    ),
                 PagingEnabled = false,
                 AllowsMultipleSelection = true,
                 RowHeight = 60,
@@ -81,90 +81,102 @@ namespace FSCalendarQS.RangePicker
         {
             return DateFormatter.Parse("2016-07-08");
         }
-		[Export("maximumDateForCalendar:")]
-		NSDate MaximumDateForCalendar(FSCalendar calendar)
+        [Export("maximumDateForCalendar:")]
+        NSDate MaximumDateForCalendar(FSCalendar calendar)
         {
             return Gregorian.DateByAddingUnit(NSCalendarUnit.Month, 10, NSDate.Now, NSCalendarOptions.None);
         }
 
-		[Export("calendar:titleForDate:")]
-        string CalendarDateTitle(FSCalendar calendar, NSDate date) {
-            if (Gregorian.IsDateInToday(date)) {
+        [Export("calendar:titleForDate:")]
+        string CalendarDateTitle(FSCalendar calendar, NSDate date)
+        {
+            if (Gregorian.IsDateInToday(date))
+            {
                 return "Today";
             }
             return null;
         }
 
-		[Export("calendar:cellForDate:atMonthPosition:")]
-		FSCalendarCell CalendarCellForDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition position)
+        [Export("calendar:cellForDate:atMonthPosition:")]
+        FSCalendarCell CalendarCellForDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition position)
         {
             return calendar.DequeueReusableCellWithIdentifier("cell", date, position);
         }
 
-		[Export("calendar:willDisplayCell:forDate:atMonthPosition:")]
-		void CalendarWillDisplayCell(FSCalendar calendar, FSCalendarCell cell, NSDate date, FSCalendarMonthPosition monthPosition)
+        [Export("calendar:willDisplayCell:forDate:atMonthPosition:")]
+        void CalendarWillDisplayCell(FSCalendar calendar, FSCalendarCell cell, NSDate date, FSCalendarMonthPosition monthPosition)
         {
             ConfigCell(cell, date, monthPosition);
         }
-		#endregion
+        #endregion
 
-		#region FSCalendarDelegate
-		[Export("calendar:shouldSelectDate:atMonthPosition:")]
-        bool CalendarShouldSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition) {
+        #region FSCalendarDelegate
+        [Export("calendar:shouldSelectDate:atMonthPosition:")]
+        bool CalendarShouldSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition)
+        {
             return monthPosition == FSCalendarMonthPosition.Current;
         }
 
-		[Export("calendar:shouldDeselectDate:atMonthPosition:")]
-        bool CalendarShouldDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition) {
+        [Export("calendar:shouldDeselectDate:atMonthPosition:")]
+        bool CalendarShouldDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition)
+        {
             return false;
         }
 
-		[Export("calendar:didSelectDate:atMonthPosition:")]
-        void CalendarDidSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition) {
+        [Export("calendar:didSelectDate:atMonthPosition:")]
+        void CalendarDidSelectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition)
+        {
             if (calendar.SwipeToChooseGesture.State == UIGestureRecognizerState.Changed)
             {
                 // If the selection is caused by swipe gestures
 
                 if (Date1 == null)
                 {
-                    Date1 = date;  
+                    Date1 = date;
                 }
-                else {
-                    if (Date2 != null) {
+                else
+                {
+                    if (Date2 != null)
+                    {
                         calendar.DeselectDate(Date2);
                     }
                     Date2 = date;
                 }
             }
-            else {
-                if (Date2 != null) {
+            else
+            {
+                if (Date2 != null)
+                {
                     calendar.DeselectDate(Date1);
                     calendar.DeselectDate(Date2);
                     Date1 = date;
                     Date2 = null;
                 }
-                else if (Date1 == null) {
+                else if (Date1 == null)
+                {
                     Date1 = date;
                 }
-                else {
+                else
+                {
                     Date2 = date;
                 }
             }
             ConfigureVisibleCells();
         }
 
-		[Export("calendar:didDeselectDate:atMonthPosition:")]
-		void CalendarDidDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition)
+        [Export("calendar:didDeselectDate:atMonthPosition:")]
+        void CalendarDidDeselectDate(FSCalendar calendar, NSDate date, FSCalendarMonthPosition monthPosition)
         {
             System.Diagnostics.Debug.WriteLine($"Did deselect date: {DateFormatter.ToString(date)}");
             ConfigureVisibleCells();
         }
 
-		[Export("calendar:appearance:eventDefaultColorsForDate:")]
-		UIColor[] CalendarEventDefaultColorsForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date)
+        [Export("calendar:appearance:eventDefaultColorsForDate:")]
+        UIColor[] CalendarEventDefaultColorsForDate(FSCalendar calendar, FSCalendarAppearance appearance, NSDate date)
         {
-            if (Gregorian.IsDateInToday(date)) {
-                return new UIColor[]{UIColor.Orange };
+            if (Gregorian.IsDateInToday(date))
+            {
+                return new UIColor[] { UIColor.Orange };
             }
             return new UIColor[] { appearance.EventDefaultColor };
         }
@@ -194,16 +206,17 @@ namespace FSCalendarQS.RangePicker
             isSelected |= Date1 != null && Gregorian.IsInSameDay(date, Date1);
             isSelected |= Date2 != null && Gregorian.IsInSameDay(date, Date2);
             rangeCell.SelectionLayer.Hidden = !isSelected;
-		}
+        }
 
-		private void ConfigureVisibleCells()
-		{
-            foreach (FSCalendarCell cell in Calendar.VisibleCells) {
+        private void ConfigureVisibleCells()
+        {
+            foreach (FSCalendarCell cell in Calendar.VisibleCells)
+            {
                 var date = Calendar.DateForCell(cell);
                 var position = Calendar.MonthPositionForCell(cell);
                 ConfigCell(cell, date, position);
             }
-		}
+        }
 
     }
 }
