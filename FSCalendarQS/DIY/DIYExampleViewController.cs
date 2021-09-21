@@ -36,7 +36,7 @@ namespace FSCalendarQS.DIY
             {
                 Frame = new CGRect(0, NavigationController.NavigationBar.Frame.GetMaxY(), View.Frame.Width, height),
                 DataSource = this,
-                WeakDelegate = this,
+                Delegate = this,
                 AllowsMultipleSelection = true
             };
             Calendar.SwipeToChooseGesture.Enabled = true;

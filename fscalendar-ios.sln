@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{CDCCE07E
 		fscalendar.nuspec = fscalendar.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSCalendarQS", "FSCalendarQS\FSCalendarQS.csproj", "{F2382B44-B574-4AB0-9B3D-68795729C0F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,19 @@ Global
 		{04E56122-1811-4C52-B5EA-EBFDC7754265}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{04E56122-1811-4C52-B5EA-EBFDC7754265}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{04E56122-1811-4C52-B5EA-EBFDC7754265}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|Any CPU.ActiveCfg = Release|iPhone
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|Any CPU.Build.0 = Release|iPhone
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|iPhone.ActiveCfg = Release|iPhone
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|iPhone.Build.0 = Release|iPhone
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{F2382B44-B574-4AB0-9B3D-68795729C0F2}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
